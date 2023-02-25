@@ -94,7 +94,7 @@ function startTheTimer(){
 
       id=setInterval(function(){
         refreshTimer(id);
-     },100);
+     },1000);
      lowerSectionButton1.addEventListener("click",function(){
         pauseTheTimer(id);
  })
