@@ -1,6 +1,7 @@
 let sessionTime=0;
 let changeHeading=document.getElementById("changeHeading");
 let breakTime=0;
+let id;
 let decider=0,mm=0,ss=0;
 let flag=false;
 let getSessionTimeElement=document.getElementById("sessionTime");
@@ -91,7 +92,7 @@ function startTheTimer(){
      lowerSectionButton1.removeEventListener("click",startTheTimer);
    
 
-     let id=setInterval(function(){
+      id=setInterval(function(){
         refreshTimer(id);
      },100);
      lowerSectionButton1.addEventListener("click",function(){
@@ -166,15 +167,31 @@ function setTime(val){
 function pauseTheTimer(id){
        clearInterval(id)
        flag=true;
-       sessionIncButton.disabled=false;
-       sessionDecButton.disabled=false;
-       breakIncButton.disabled=false;
-       breakDecButton.disabled=false;
+    //    sessionIncButton.disabled=false;
+    //    sessionDecButton.disabled=false;
+    //    breakIncButton.disabled=false;
+    //    breakDecButton.disabled=false;
        lowerSectionButton1.removeEventListener("click",pauseTheTimer);
        lowerSectionButton1.addEventListener("click",startTheTimer);
        lowerSectionButton1.innerHTML="Start"
 }
 function ResetTheTimer(){
-   location.reload();
+  // location.reload();
+   mm=0;ss=0;decider=0;
+   flag=0;
+   sessionTime=0;
+   breakTime=0;
+   displaySessionTime();
+   sessionIncButton.disabled=false;
+   sessionDecButton.disabled=false;
+   breakIncButton.disabled=false;
+   breakDecButton.disabled=false;
+   displayBreakTime();
+   changeHeading.innerHTML="Pomodoro"
+   clearInterval(id);
+   timer.innerHTML="00.00"
+   lowerSectionButton1.removeEventListener("click",pauseTheTimer);
+   lowerSectionButton1.addEventListener("click",startTheTimer);
+   lowerSectionButton1.innerHTML="Start"
 
 }
